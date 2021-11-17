@@ -7,7 +7,7 @@ interface IParamsType {
 
 const Coin: React.FC = () => {
   const { coinId } = useParams<IParamsType>();
-  return <div>Coin</div>;
+  return <div>Coin : ${coinId}</div>;
 };
 
 export default Coin;

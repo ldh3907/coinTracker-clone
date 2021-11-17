@@ -1,2 +1,2 @@
-export { default as Coins } from "./Coins";
-export { default as Coin } from "./Coin";
+export { default as Coins } from "./Coins/Coins";
+export { default as Coin } from "./Coin/Coin";
