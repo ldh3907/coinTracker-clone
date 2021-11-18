@@ -34,3 +34,8 @@ export const Coin = styled.li`
     }
   }
 `;
+
+export const Loader = styled.span`
+  text-align: center;
+  display: block;
+`;
