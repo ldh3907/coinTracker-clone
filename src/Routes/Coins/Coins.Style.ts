@@ -26,13 +26,19 @@ export const Coin = styled.li`
   border-radius: 5px;
   a {
     transition: color 0.2s ease-in;
-    display: block;
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
   }
   &:hover {
     a {
       color: ${(props) => props.theme.accentColor};
     }
   }
+`;
+
+export const CoinImg = styled.img`
+  width: 35px;
 `;
 
 export const Loader = styled.span`

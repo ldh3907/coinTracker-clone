@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Coin,
+  CoinImg,
   CoinsList,
   Container,
   Header,
@@ -45,7 +46,17 @@ const Coins: React.FC = () => {
           {coins.map((coin) => {
             return (
               <Coin key={coin.id}>
-                <Link to={`/${coin.id}`}>{coin.name} &rarr;</Link>
+                <Link
+                  to={{
+                    pathname: `/${coin.id}`,
+                    state: { name: coin.name },
+                  }}
+                >
+                  <CoinImg
+                    src={`https://cryptoicon-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
+                  />
+                  {coin.name} &rarr;
+                </Link>
               </Coin>
             );
           })}
