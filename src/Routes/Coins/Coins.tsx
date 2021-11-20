@@ -1,5 +1,4 @@
-import axios from "axios";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Coin,
@@ -28,7 +27,6 @@ const Coins: React.FC = () => {
     (async () => {
       const res = await fetch("https://api.coinpaprika.com/v1/coins");
       const json = await res.json();
-      console.log(json);
       setCoins(json.slice(0, 100));
       setLoading(false);
     })();

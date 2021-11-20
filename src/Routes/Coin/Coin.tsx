@@ -1,6 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router";
-import { Container, Header, Loader, Title } from "./Coin.style";
+import { Route, Switch, useLocation, useParams } from "react-router";
+import Chart from "../Chart";
+import Price from "../Price";
+import {
+  Container,
+  Header,
+  Loader,
+  OverviewBox,
+  OverviewDescription,
+  OverviewItem,
+  OverviewWrap,
+  Title,
+} from "./Coin.style";
 
 interface IRouterState {
   name: string;
@@ -80,19 +91,54 @@ const Coin: React.FC = () => {
       const priceData = await (
         await fetch(`https://api.coinpaprika.com/v1/tickers/${coinId}`)
       ).json();
-      console.log(infoData);
-      console.log(priceData);
       setInfo(infoData);
       setPriceInfo(priceData);
+      setLoading(false);
     })();
-  }, []);
+  }, [coinId]);
 
   return (
     <Container>
       <Header>
-        <Title>{state?.name || "Loading..."}</Title>
+        <Title>
+          {state?.name ? state.name : loading ? "Loading..." : info?.name}
+        </Title>
       </Header>
-      {loading ? <Loader>Loading...</Loader> : null}
+      {loading ? (
+        <Loader>Loading...</Loader>
+      ) : (
+        <OverviewWrap>
+          <OverviewBox>
+            <OverviewItem>
+              <span>RANK:</span>
+              <span>{info?.rank}</span>
+            </OverviewItem>
+            <OverviewItem>
+              <span>SYMBOL:</span>
+              <span>{info?.symbol}</span>
+            </OverviewItem>
+            <OverviewItem>
+              <span>OPEN SOURCE:</span>
+              <span>{info?.open_source ? "YES" : "NO"}</span>
+            </OverviewItem>
+          </OverviewBox>
+          <OverviewDescription>{info?.description}</OverviewDescription>
+          <OverviewBox>
+            <OverviewItem>
+              <span>TOTAL SUPPLY:</span>
+              <span>{priceInfo?.total_supply}</span>
+            </OverviewItem>
+            <OverviewItem>
+              <span>MAX SUPPLY:</span>
+              <span>{priceInfo?.max_supply}</span>
+            </OverviewItem>
+          </OverviewBox>
+          <Switch>
+            <Route path={`/${coinId}/chart`} component={Chart} />
+            <Route path={`/${coinId}/price`} component={Price} />
+          </Switch>
+        </OverviewWrap>
+      )}
     </Container>
   );
 };
