@@ -50,7 +50,7 @@ export const OverviewItem = styled.div`
   row-gap: 5px;
   margin: 0px auto;
 
-  span: first-child {
+  span:first-child {
     font-size: 20px;
   }
 `;
@@ -58,4 +58,30 @@ export const OverviewItem = styled.div`
 export const OverviewDescription = styled.p`
   width: 100%;
   font-size: 30px;
+`;
+
+export const Tabs = styled.div`
+  width: 100%;
+  display: flex;
+
+  div:first-child {
+    margin-right: auto;
+  }
+`;
+
+export const Tab = styled.div<{ isActive: boolean }>`
+  width: 48%;
+  height: 60px;
+  background-color: ${(props) => props.theme.textColor};
+  border-radius: 5px;
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  p {
+    color: ${(props) => (props.isActive ? props.theme.accentColor : "black")};
+    font-size: 20px;
+  }
 `;

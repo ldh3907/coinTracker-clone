@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Route, Switch, useLocation, useParams } from "react-router";
+import {
+  Route,
+  Switch,
+  useLocation,
+  useParams,
+  useRouteMatch,
+} from "react-router";
+import { Link } from "react-router-dom";
 import Chart from "../Chart";
 import Price from "../Price";
 import {
@@ -10,6 +17,8 @@ import {
   OverviewDescription,
   OverviewItem,
   OverviewWrap,
+  Tab,
+  Tabs,
   Title,
 } from "./Coin.style";
 
@@ -82,7 +91,8 @@ const Coin: React.FC = () => {
   const [priceInfo, setPriceInfo] = useState<IPriceData>();
   const { coinId } = useParams<IParamState>();
   const { state } = useLocation<IRouterState>();
-
+  const priceMatch = useRouteMatch("/:coinId/price");
+  const chartMatch = useRouteMatch("/:coinId/chart");
   useEffect(() => {
     (async () => {
       const infoData = await (
@@ -133,9 +143,23 @@ const Coin: React.FC = () => {
               <span>{priceInfo?.max_supply}</span>
             </OverviewItem>
           </OverviewBox>
+
+          <Tabs>
+            <Tab isActive={chartMatch !== null}>
+              <Link to={`/${coinId}/chart`}>
+                <p>CHART</p>
+              </Link>
+            </Tab>
+            <Tab isActive={priceMatch !== null}>
+              <Link to={`/${coinId}/price`}>
+                <p>PRICE</p>
+              </Link>
+            </Tab>
+          </Tabs>
+
           <Switch>
-            <Route path={`/${coinId}/chart`} component={Chart} />
-            <Route path={`/${coinId}/price`} component={Price} />
+            <Route path={`/:coinId/chart`} component={Chart} />
+            <Route path={`/:coinId/price`} component={Price} />
           </Switch>
         </OverviewWrap>
       )}
