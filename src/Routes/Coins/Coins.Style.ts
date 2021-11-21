@@ -20,16 +20,16 @@ export const Title = styled.h1`
 `;
 
 export const CoinsList = styled.ul`
-  width: 60%;
+  width: 40%;
   margin: 0px auto;
 `;
 
 export const Coin = styled.li`
-  background-color: white;
-  color: ${(props) => props.theme.bgColor};
+  background-color: ${(props) => props.theme.accentColor};
+  color: white;
   padding: 20px;
   margin-bottom: 10px;
-  border-radius: 5px;
+  border-radius: 50px;
   a {
     transition: color 0.2s ease-in;
     display: flex;
@@ -39,7 +39,7 @@ export const Coin = styled.li`
   }
   &:hover {
     a {
-      color: ${(props) => props.theme.accentColor};
+      color: ${(props) => props.theme.bgColor};
     }
   }
 `;

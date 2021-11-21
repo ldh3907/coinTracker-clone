@@ -25,7 +25,7 @@ export const Loader = styled.span`
 `;
 
 export const OverviewWrap = styled.div`
-  width: 60%;
+  width: 40%;
   margin: 0px auto;
   display: flex;
   flex-direction: column;
@@ -34,30 +34,32 @@ export const OverviewWrap = styled.div`
 
 export const OverviewBox = styled.div`
   width: 100%;
-  height: 100px;
-  background-color: ${(props) => props.theme.textColor};
+  height: 75px;
+  background-color: ${(props) => props.theme.accentColor};
   border-radius: 5px;
   display: flex;
   align-items: center;
+  border-radius: 20px;
 `;
 
 export const OverviewItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: black;
-  font-size: 40px;
+  color: white;
+  font-size: 20px;
   row-gap: 5px;
   margin: 0px auto;
+  min-width: 104px;
 
   span:first-child {
-    font-size: 20px;
+    font-size: 15px;
   }
 `;
 
 export const OverviewDescription = styled.p`
   width: 100%;
-  font-size: 30px;
+  font-size: 20px;
 `;
 
 export const Tabs = styled.div`
@@ -71,9 +73,9 @@ export const Tabs = styled.div`
 
 export const Tab = styled.div<{ isActive: boolean }>`
   width: 48%;
-  height: 60px;
-  background-color: ${(props) => props.theme.textColor};
-  border-radius: 5px;
+  height: 40px;
+  background-color: ${(props) => props.theme.accentColor};
+  border-radius: 20px;
   a {
     display: flex;
     align-items: center;
@@ -81,7 +83,7 @@ export const Tab = styled.div<{ isActive: boolean }>`
     height: 100%;
   }
   p {
-    color: ${(props) => (props.isActive ? props.theme.accentColor : "black")};
-    font-size: 20px;
+    color: ${(props) => (props.isActive ? props.theme.bgColor : "white")};
+    font-size: 15px;
   }
 `;

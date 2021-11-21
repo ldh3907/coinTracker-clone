@@ -156,8 +156,12 @@ const Coin: React.FC = () => {
           </Tabs>
 
           <Switch>
-            <Route path={`/:coinId/chart`} component={Chart} />
-            <Route path={`/:coinId/price`} component={Price} />
+            <Route path={`/:coinId/chart`}>
+              <Chart coinId={coinId} />
+            </Route>
+            <Route path={`/:coinId/price`}>
+              <Price />
+            </Route>
           </Switch>
         </OverviewWrap>
       )}
