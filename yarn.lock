@@ -9515,10 +9515,10 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-17.0.1.tgz"
   "version" "17.0.1"
 
-"react-query@^3.32.3":
-  "integrity" "sha512-RB/EOSdJkmuypDIARG/mVi2T41WZKz3tUh72HAUu1OA3VoFr2kG2OFZoO3ylMKjUYI4A9bSaD7wtYg4Nwb71gQ=="
-  "resolved" "https://registry.npmjs.org/react-query/-/react-query-3.32.3.tgz"
-  "version" "3.32.3"
+"react-query@^3.33.2":
+  "integrity" "sha512-hlGMl0FyFvO2mrgJObgKbJMzulzB4bzQZnh4ZhekCKWNhf0XH007Gi71wsaO+xCTyv8DNGxnrgBe/V+rvTWFjQ=="
+  "resolved" "https://registry.npmjs.org/react-query/-/react-query-3.33.2.tgz"
+  "version" "3.33.2"
   dependencies:
     "@babel/runtime" "^7.5.5"
     "broadcast-channel" "^3.4.1"

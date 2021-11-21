@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
+import { fetchCoins } from "../../API/FetchCoins";
 import {
   Coin,
   CoinImg,
@@ -21,27 +23,18 @@ interface ICoinProps {
 }
 
 const Coins: React.FC = () => {
-  const [coins, setCoins] = useState<ICoinProps[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  useEffect(() => {
-    (async () => {
-      const res = await fetch("https://api.coinpaprika.com/v1/coins");
-      const json = await res.json();
-      setCoins(json.slice(0, 100));
-      setLoading(false);
-    })();
-  }, []);
+  const { isLoading, data } = useQuery<ICoinProps[]>("allCoins", fetchCoins);
 
   return (
     <Container>
       <Header>
         <Title>Coins</Title>
       </Header>
-      {loading ? (
+      {isLoading ? (
         <Loader>Loading...</Loader>
       ) : (
         <CoinsList>
-          {coins.map((coin) => {
+          {data?.map((coin) => {
             return (
               <Coin key={coin.id}>
                 <Link
