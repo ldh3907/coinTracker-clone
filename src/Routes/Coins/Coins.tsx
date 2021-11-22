@@ -29,7 +29,7 @@ const Coins: React.FC = () => {
   return (
     <Container>
       <Helmet>
-        <title>Coins</title>
+        <title>코인</title>
       </Helmet>
       <Header>
         <Title>Coins</Title>
